@@ -50,6 +50,21 @@ class Dataset():
             self.dataset_test = datasets.CIFAR10('../data', train=False, download=True, transform=self.test_setting)
             # 50000
 
+        if(f.dataset == 'pubfig'):
+            print('pubfig data')
+            stats = ((0.4914, 0.4822, 0.4465), (0.2023, 0.1994, 0.2010))
+            self.trans_setting = transforms.Compose([transforms.RandomCrop(32, padding=4, padding_mode='reflect'),
+                         transforms.RandomHorizontalFlip(),
+                         # transforms.RandomRotate
+                         # transforms.RandomResizedCrop(256, scale=(0.5,0.9), ratio=(1, 1)),
+                         # transforms.ColorJitter(brightness=0.1, contrast=0.1, saturation=0.1, hue=0.1),
+                         transforms.ToTensor(),
+                         transforms.Normalize(*stats,inplace=True)])
+            # self.trans_setting = transforms.Compose([transforms.ToTensor(), transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))])
+            self.test_setting = transforms.Compose([transforms.ToTensor(), transforms.Normalize(*stats)])
+            self.dataset_train = datasets.CelebA('../data', train=True, download=True, transform=self.trans_setting)
+            self.dataset_test = datasets.CelebA('../data', train=False, download=True, transform=self.test_setting)
+
     def sampling(self):
         if(f.dataset == 'mnist'):
             self.dict_users, self.idxs_labels = s.my_noniid(self.dataset_train)
