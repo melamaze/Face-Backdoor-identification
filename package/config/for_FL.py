@@ -9,7 +9,7 @@ num_users = 1
 total_users = 10
 
 #ratio of attacker in total users
-attack_ratio = 0.5
+attack_ratio = 0.3
 
 
 #type of attack
@@ -52,7 +52,6 @@ momentum = 0.5
 defence = 'shuffle'
 
 #the path to save trained model
-#也可以加資料夾(但資料夾要先建好)，ex:'./record/save_model'
 model_path = './save_model' 
 
 #noniid rate
