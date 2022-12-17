@@ -4,7 +4,8 @@ from .FL.attackers import Attackers
 from .FL.clients import Server
 from .FL.image import Plot
 from datetime import datetime
-from .FL.resnet import ResNet18
+from .FL.resnet import resnet50
+from .FL.VGG_face2 import VGG_Faces2
 
 import torch
 import copy
@@ -25,12 +26,12 @@ def main():
     print(f.device)
 
     # build dataset
-    my_data = Dataset()
+    my_data = VGG_Faces2()
     # distribute data to users
     my_data.sampling()
 
     # model
-    FL_net = ResNet18().to(f.device)
+    FL_net = resnet50().to(f.device)
 
     # draw
     plot = Plot()
