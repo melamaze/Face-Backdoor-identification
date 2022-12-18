@@ -24,13 +24,13 @@ def test_img_poison(net, datatest):
     test_loss = 0
     if f.dataset == "cifar10":
         # SEPERATE INTO TWO CASE: 1. normal dataset(without poison) 2. poison dataset(all poison)
-        correct  = torch.tensor([0.0] * 10)
-        correct_pos = torch.tensor([0.0] * 10)
-        correct_train = torch.tensor([0.0] * 10)
+        correct  = torch.tensor([0.0] * 8631)
+        correct_pos = torch.tensor([0.0] * 8631)
+        correct_train = torch.tensor([0.0] * 8631)
         # number of each picture
-        gold_all = torch.tensor([0.0] * 10)
-        gold_all_pos = torch.tensor([0.0] * 10)
-        gold_all_train = torch.tensor([0.0] * 10)
+        gold_all = torch.tensor([0.0] * 8631)
+        gold_all_pos = torch.tensor([0.0] * 8631)
+        gold_all_train = torch.tensor([0.0] * 8631)
     else:
         print("Unknown dataset")
         exit(0)
